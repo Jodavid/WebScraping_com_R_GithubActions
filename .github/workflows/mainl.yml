@@ -6,7 +6,6 @@ on:
   schedule:
     - cron:  '*/2 * * * *'
 
-
 jobs: 
   autoscrape:
     # O tipo de executor no qual o trabalho será executado
