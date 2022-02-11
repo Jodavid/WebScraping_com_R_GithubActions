@@ -2,9 +2,9 @@
 name: JodaScraping
 
 # Controles para execução do action.
-on:
-  schedule:
-    - cron:  '0 */2 * * *'
+on: [push]
+  #schedule:
+  #  - cron:  '0 */2 * * *'
 
 jobs: 
   autoscrape:
@@ -21,7 +21,7 @@ jobs:
     # Setup R
     - name: Install packages
       run: |
-        apt install libcurl4-openssl-dev
+        sudo apt install -y libcurl4-openssl-dev
         R -e 'install.packages("curl")'
         R -e 'install.packages("httr")'
         R -e 'install.packages("rvest")'
