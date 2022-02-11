@@ -99,3 +99,11 @@ jobs:
         username: github-actions
 ```
 
+2. Criar uma pasta `.github`
+
+3. Dentro da pasta `.github` criar a pasta `workflows`
+
+3. Dentro da pasta `workflows` cria o arquivo `main.yml` com o código desenvolvido acima
+
+4. Faz o commit e envia as modificações
+
