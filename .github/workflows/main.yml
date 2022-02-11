@@ -4,7 +4,7 @@ name: JodaScraping
 # Controles para execução do action.
 on:
   schedule:
-    - cron:  '*/10 * * * *'
+    - cron:  '0 */2 * * *'
 
 jobs: 
   autoscrape:
