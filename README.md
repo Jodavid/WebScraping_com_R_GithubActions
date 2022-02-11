@@ -1,6 +1,8 @@
 
 # WebScraping com R GithubActions
 
+[![JodaScraping](https://github.com/Jodavid/WebScraping_com_R_GithubActions/actions/workflows/main.yml/badge.svg)](https://github.com/Jodavid/WebScraping_com_R_GithubActions/actions/workflows/main.yml)
+
 Última atualização: 11-02-2022
 
 <hr/>
@@ -28,8 +30,6 @@ necessários para execução necessária.
 
 ### Detalhe sobre o Crontab
 
--   /15 \* \* \* \*
-
 Abaixo segue detalhes sobre eles:
 
 -   Minuto: Valores de 0 a 59 ou \*
@@ -53,7 +53,7 @@ minutos.
     # Scraping por Dia
     name: JodaScraping
 
-    # Controls when the action will run.
+    # Controles para execução do action.
     on:
       schedule:
         - cron:  '*/5 * * * *'
@@ -61,25 +61,24 @@ minutos.
 
     jobs: 
       autoscrape:
-        # The type of runner that the job will run on
-        runs-on: macos-latest
+        # O tipo de executor no qual o trabalho será executado
+        runs-on: ubuntu-latest
 
-        # Load repo and install R
+        # Carregar repo e instalar R
         steps:
         - uses: actions/checkout@master
         - uses: r-lib/actions/setup-r@master
 
-        # Set-up R
+        # Setup R
         - name: Install packages
           run: |
-            R -e 'install.packages("tidyverse")'
-            R -e 'install.packages("janitor")'
             R -e 'install.packages("rvest")'
+            R -e 'install.packages("stringr")'
         # Run R script
         - name: Scrape
-          run: Rscript nifty50_scraping.R
+          run: Rscript CodigoPrincipal.R
           
-     # Add new files in data folder, commit along with other modified files, push
+     # Adicione novos arquivos na pasta de dados, confirme junto com outros arquivos modificados, empurre
         - name: Commit files
           run: |
             git config --local user.name actions-user
@@ -90,3 +89,18 @@ minutos.
           env:
             REPO_KEY: ${{secrets.GITHUB_TOKEN}}
             username: github-actions
+
+2.  Criar uma pasta `.github`
+
+3.  Dentro da pasta `.github` criar a pasta `workflows`
+
+4.  Dentro da pasta `workflows` cria o arquivo `main.yml` com o código
+    desenvolvido acima
+
+5.  Faz o commit e envia as modificações
+
+6.  No Github vai na opção `Actions`
+
+7.  Clica no Workflow criado;
+
+8.  

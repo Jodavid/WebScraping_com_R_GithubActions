@@ -11,6 +11,8 @@ knitr::opts_chunk$set(
 ```
 
 # WebScraping com R GithubActions
+[![JodaScraping](https://github.com/Jodavid/WebScraping_com_R_GithubActions/actions/workflows/main.yml/badge.svg)](https://github.com/Jodavid/WebScraping_com_R_GithubActions/actions/workflows/main.yml)
+
 
 Última atualização: `r format(Sys.Date(),"%d-%m-%Y")`
 
@@ -80,6 +82,9 @@ jobs:
     # Setup R
     - name: Install packages
       run: |
+        sudo apt install -y libcurl4-openssl-dev
+        R -e 'install.packages("curl")'
+        R -e 'install.packages("httr")'
         R -e 'install.packages("rvest")'
         R -e 'install.packages("stringr")'
     # Run R script
@@ -106,4 +111,12 @@ jobs:
 3. Dentro da pasta `workflows` cria o arquivo `main.yml` com o código desenvolvido acima
 
 4. Faz o commit e envia as modificações
+
+5. No Github vai na opção `Actions`
+
+6. Clica no Workflow criado;
+
+7. Entrar em `settings`, `Environments`, `New environment`
+
+8. Cria um `nome` e `Add Secret`, adicione sua chave secreta, ou crie uma para o workflow.
 

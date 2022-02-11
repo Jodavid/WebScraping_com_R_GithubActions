@@ -2,10 +2,9 @@
 name: JodaScraping
 
 # Controles para execução do action.
-on:
-  schedule:
-    - cron:  '*/5 * * * *'
-
+on: [push]
+  #schedule:
+  #  - cron:  '0 */2 * * *'
 
 jobs: 
   autoscrape:
@@ -16,10 +15,15 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - uses: r-lib/actions/setup-r@master
+      with:
+           r-version: '4.1.1'
 
     # Setup R
     - name: Install packages
       run: |
+        sudo apt install -y libcurl4-openssl-dev
+        R -e 'install.packages("curl")'
+        R -e 'install.packages("httr")'
         R -e 'install.packages("rvest")'
         R -e 'install.packages("stringr")'
     # Run R script
@@ -33,7 +37,7 @@ jobs:
         git config --local user.email "actions@github.com"
         git add data/*
         git commit -am "GH ACTION Headlines $(date)"
-        git push origin main
+        git push origin master
       env:
         REPO_KEY: ${{secrets.GITHUB_TOKEN}}
         username: github-actions
