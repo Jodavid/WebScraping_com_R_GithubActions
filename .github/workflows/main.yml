@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@master
     - uses: r-lib/actions/setup-r@master
       with:
-           r-version: '4.1.0'
+           r-version: '4.1.1'
 
     # Setup R
     - name: Install packages
