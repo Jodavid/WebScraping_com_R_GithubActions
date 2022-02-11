@@ -3,3 +3,6 @@
 .Rdata
 .httr-oauth
 .DS_Store
+.RData
+.Rproj
+WebScraping_com_R_GithubActions.Rproj
