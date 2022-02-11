@@ -2,9 +2,9 @@
 name: JodaScraping
 
 # Controles para execução do action.
-on: [push]
-  #schedule:
-  #  - cron:  '0 */2 * * *'
+on: #[push]
+  schedule:
+    - cron:  '0 15 * * *'
 
 jobs: 
   autoscrape:
