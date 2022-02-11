@@ -37,5 +37,5 @@ jobs:
         git commit -am "GH ACTION Headlines $(date)"
         git push origin master
       env:
-        GITHUB_TOKEN: ${{ github.token }}
+        REPO_KEY: ${{secrets.GITHUB_TOKEN}}
         username: github-actions
